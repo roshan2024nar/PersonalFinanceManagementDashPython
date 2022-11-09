@@ -34,7 +34,7 @@ lottie_hello = load_lottieurl("https://assets9.lottiefiles.com/packages/lf20_M9p
 
 @st.cache(allow_output_mutation=True)
 def read_csv():
-    data = pd.read_csv("D:/Projects/PersonalFinanceManagement/Dataset/personal_transactions.csv")
+    data = pd.read_csv("Dataset/personal_transactions.csv")
     data.rename(columns={'Transaction Type': 'Transaction_Type', 'Account Name': 'Account_Name'}, inplace=True)
     return data
 
