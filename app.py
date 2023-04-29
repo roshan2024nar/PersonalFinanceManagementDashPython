@@ -149,7 +149,7 @@ if selected == 'Expense':
 
     with st.container():
         with c1:
-
+            st.markdown("###")
             debit_data = data[data["Transaction_Type"] == "debit"]
             debit_avg =debit_data.groupby(["month_year"])["Amount"].sum().reset_index(name='Total')
             fig8 = px.line(data_frame=debit_avg, x='month_year', y='Total' , color_discrete_sequence= ['red'])
@@ -229,7 +229,7 @@ if selected == 'Income':
             fig1.update_layout( width = 350 , height = 350)
             st.write(fig1)
 
-
+    
     st.markdown(f'<h1 style = " text-align : center ; color: green;font-size:35px;">{"Income Analysis"}</h1>', unsafe_allow_html=True)
 
     col1 , col2 = st.columns([6,4])
@@ -255,7 +255,9 @@ if selected == 'Income':
 
     c1 , c2  = st.columns([2,2])
     with st.container():
+        
         with c2:
+            
             mon_data = data.groupby(['month_year', 'Transaction_Type'])['Amount'].sum().reset_index(name='Total')
             fig4 = px.bar(mon_data, x='month_year', y='Total', color='Transaction_Type', barmode='group' , width= 800,
                          color_discrete_sequence =  ['lightgreen' , 'red'], height= 500 )
@@ -266,6 +268,7 @@ if selected == 'Income':
             st.plotly_chart(fig4 , config = {'displayModeBar' : False})
 
         with c1:
+            st.markdown("##")
             debit_data = data[data["Transaction_Type"] == "credit"]
             debit_avg =debit_data.groupby(["month_year"])["Amount"].mean().reset_index(name='Total')
             fig8 = px.line(data_frame=debit_avg, x='month_year', y='Total' , color_discrete_sequence= ['blue'])
